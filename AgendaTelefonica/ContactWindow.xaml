@@ -1,0 +1,72 @@
+<Window x:Class="AgendaTelefonica.ContactWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AgendaTelefonica"
+        mc:Ignorable="d"
+        Background="#F5F5F5"
+        Title="Contato" Height="400" Width="350" WindowStyle="ToolWindow">
+
+    <Window.Resources>
+        <DropShadowEffect x:Key="buttonShadow" ShadowDepth="2" Direction="270" Opacity="0.5" BlurRadius="2"/>
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="Margin" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Effect" Value="{StaticResource buttonShadow}"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Nome" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="1" Text="{Binding contato.Nome}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="2" Text="Tipo de Contato" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="3" Text="{Binding contato.TipoContato}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="4" Text="Telefone" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="5" Text="{Binding contato.Telefone}" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="6" Text="Email" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="7" Text="{Binding contato.Email}" Margin="0,0,0,20"/>
+
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="OKButton"
+                    Grid.Column="0"
+                    Content="OK"
+                    Style="{StaticResource ActionButtonStyle}"
+                    IsDefault="True"
+                    CommandParameter="{Binding}"
+                    Command="{Binding OK}" />
+
+            <Button Grid.Column="1"
+                    Content="Cancelar"
+                    Margin="5,0,0,0"
+                    Style="{StaticResource ActionButtonStyle}"
+                    Background="#FF5C5C"
+                    IsCancel="True"
+                    CommandParameter="{Binding}"
+                    Command="{Binding Cancelar}"  />
+        </Grid>
+    </Grid>
+</Window>
